@@ -34,8 +34,10 @@ let blinkToggle = true
     
 // }
 
-function pressStart(){
-    
+function removeDisplay(){
+    bottomtext.style.display = "none"
+        playButton.style.display = "none"
+        h1.style.display = "none"
 
 }
 function canny(){
@@ -59,9 +61,16 @@ function canny(){
     }
 }
 
+
 function start(){
+    playButton.removeEventListener("click", start)
+    playButton.removeEventListener("mouseover", start)
+    playButton.classList.remove("hover")
     playButton.classList.add("flash")
+    bottomtext.classList.add("flash")
     bottomtext.classList.remove("animate")
+
+    clickAudio.play()
     
     setTimeout(function(){
         bottomtext.classList.add("hidden")
@@ -74,16 +83,15 @@ function start(){
 
         
     }, 900)
-
+    
+    setTimeout(function(){
+        removeDisplay()
+    }, 1600)
     
     
-    clickAudio.play()
-    // for (let i = 0; i < firstDisplay.length; i++){
-    //     console.log(i)
-    //     firstDisplay[i].style.display = "none"
-    // }
     
-    playButton.removeEventListener("click", start)
+  
+    
     
 
     
@@ -92,7 +100,6 @@ function start(){
 setTimeout(
     function(){
         playButton.addEventListener("click", start)
-        
     }, 500)
 
 

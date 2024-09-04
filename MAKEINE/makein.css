@@ -21,13 +21,40 @@ body{
     width: 50%;
     border-width: 5px;
     border-radius: 25px;
-    border-color: black;
+    border-color: rgb(45, 66, 109);
     border-style:solid;
 
     transition: opacity 800ms ease-out;
     
     
 }
+.hover{
+    display: block;
+
+    margin: auto;
+
+    width: 50%;
+    border-width: 5px;
+    border-radius: 25px;
+    border-color: rgb(45, 66, 109);
+    border-style:solid;
+
+    transition: opacity 800ms ease-out;
+    
+    
+}
+.hover:hover {
+    filter: brightness(0.5);
+    border-color: rgb(0, 0, 0);
+    
+    transform: translateY(1%);
+    
+    
+    
+    
+    
+}
+
 #playButton2{
     transition: opacity 800ms ease-out;
 }
@@ -40,11 +67,12 @@ body{
     
     font-family:'Courier New', Courier, monospace;
     font-size: 30px;
-    font-weight: 2000;
+    font-weight: 900;
 
     transition: opacity 800ms ease-out;
    
 }
+
 
 @keyframes blink{
     0% {opacity: 0;}
@@ -58,19 +86,28 @@ body{
 
 .hidden{
     opacity: 0;
+    
+    
 }
 
 @keyframes flash{
     0% {filter:brightness(1000%);
-        border-color:white; }
-    10% {filter:brightness(100%)}
-    30% {filter:brightness(1000%)}
-    60% {filter:brightness(100%)}
+        border-color:white; 
+        color: white;}
+    15% {filter:brightness(100%);
+        color: rgb(0, 0, 0);}
+    25% {filter:brightness(1000%);
+        color: rgb(255, 255, 255);}
+    50% {filter:brightness(100%);
+        color: rgb(0, 0, 0);}
     
+        
+          
 }
 
 .flash{
     animation: flash 800ms ease-out;
+    
 }
 
 #placeholder{
