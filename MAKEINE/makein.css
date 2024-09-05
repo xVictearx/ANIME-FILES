@@ -18,7 +18,7 @@ body{
 
     margin: auto;
 
-    width: 50%;
+    width: 25%;
     border-width: 5px;
     border-radius: 25px;
     border-color: rgb(45, 66, 109);
@@ -28,6 +28,90 @@ body{
     
     
 }
+
+.socials{
+    position: fixed;
+    /* background-color: red; */
+    left: 50%;
+    bottom: 0%;
+    transform: translate(-50%,80%);
+    
+    /* padding-bottom: 20%; */
+    aspect-ratio: 1 / 1;
+    width: 20%;
+
+    transition: 800ms ease-out;
+}
+.popup{
+    position: absolute;
+    /* bottom: -21%; */
+    /* bottom: 0.5%;
+    left: 50%;
+    transform: translateX(-50%); */
+
+
+    margin: auto;
+
+    width: 100%;
+    
+    
+   
+    
+    
+}
+#twet{
+    
+    width: 100%;
+
+    /* position: absolute;
+    
+   
+    bottom: 5%; 
+    left: 50%;
+    transform: translateX(-50%); */
+}
+#inst{
+    
+    width: 100%;
+
+    /* position: absolute;
+    
+   
+    bottom: 5%; 
+    left: 50%;
+    transform: translateX(-50%); */
+}
+.social_buttons{
+
+    position: absolute;
+    
+    display: flex;
+    flex-direction: column;
+    bottom: -20%; 
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.socials:hover {
+    transition: 0.8s ease-out;
+    transform: translate(-50%,-45%);
+    
+}
+#twet:hover {
+    filter: brightness(0.9);
+    
+}
+
+
+/* #inst{
+    display: inline-block;
+    position: fixed;
+   
+    bottom: 4.3%;
+    left: 49.5%;
+    transform: translateX(-50%);
+} */
 .hover{
     display: block;
 
@@ -38,6 +122,8 @@ body{
     border-radius: 25px;
     border-color: rgb(45, 66, 109);
     border-style:solid;
+
+    cursor:pointer;
 
     transition: opacity 800ms ease-out;
     
