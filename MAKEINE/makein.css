@@ -26,11 +26,11 @@ body{
 
     transition: opacity 800ms ease-out;
     
-    
 }
 
 .socials{
     position: fixed;
+    z-index: 5;
     /* background-color: red; */
     left: 50%;
     bottom: 0%;
@@ -63,27 +63,13 @@ body{
     
     width: 100%;
 
-    /* position: absolute;
-    
-   
-    bottom: 5%; 
-    left: 50%;
-    transform: translateX(-50%); */
 }
-#inst{
-    
-    width: 100%;
 
-    /* position: absolute;
-    
-   
-    bottom: 5%; 
-    left: 50%;
-    transform: translateX(-50%); */
-}
 .social_buttons{
 
     position: absolute;
+
+    
     
     display: flex;
     flex-direction: column;
@@ -168,6 +154,36 @@ body{
 .animate{
     animation: blink 1000ms step-end 0ms infinite normal;
 }
+.bounce{
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    
+    animation: goUp 300ms ease-in-out forwards;
+}
+.newAnnaPos{
+    top: 15%;
+    left: 50%;
+}
+
+.bounceUp{
+    animation: bounceup 100ms ease-out 1 forwards;
+ }
+
+ @keyframes bounceup{
+    60% {transform: translate(-50%, -4%);}
+    100%{transform: translate(-50%, -0%);}
+ }
+ 
+
+ @keyframes goUp{
+    /* 0% {transform: translateY(0);
+        background-color: aqua;} */
+    0%{transform: translate(-50%, 200%);}
+    80% {transform: translate(-50%, -10%);}
+    100%{transform: translate(-50%, -0%);}
+    
+ }
 
 
 .hidden{
@@ -196,7 +212,7 @@ body{
     
 }
 
-#placeholder{
+/* #placeholder{
     text-align: center;
     position: fixed;
     top: 0%;
@@ -208,6 +224,29 @@ body{
     font-weight: 2000;
 
     transition: opacity 800ms ease-in;
-}
+} */
+ #annaNorm{
+    z-index: -1;
+    /* background-color: blueviolet; */
 
+    text-align: center;
+    position: fixed;
+    height: 70%;
+    bottom: -70%;
+    left: 50%;
+    transform: translate(-50%);
+    
+    
+    /* transition: goUp 800ms ease-in; */
+ }
+
+
+
+#hello{
+    display: none;
+    position: absolute;
+    top: 20%;
+    transform: translate(10%,50%);
+    font-size: 25px;
+}
 

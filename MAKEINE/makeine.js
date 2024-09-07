@@ -2,11 +2,19 @@ let playButton = document.getElementById("playButton")
 let h1 = document.getElementById("playButton2")
 let bottomtext = document.getElementById("bottomtext")
 let firstDisplay = document.getElementsByClassName("firstDisplay")
+let komari = document.getElementById("komari")
+let socialId = document.getElementById("socials")
+let socials = document.getElementsByClassName("socials")
 // let body = document.getElementsByTagName("body")
-let placeholder = document.getElementById("placeholder")
+let annaNorm = document.getElementById("annaNorm")
+
+let hello = document.getElementById("hello")
 
 let startAudio = new Audio("makeineop.mp3")
 let clickAudio = new Audio("smash.wav")
+let clickB = new Audio("button2.mp3")
+
+clickB.currentTime = 0.000005
 
 let canny1Audio = new Audio("canny1.mp3")
 let canny2Audio = new Audio("canny2.mp3")
@@ -14,10 +22,10 @@ let canny3Audio = new Audio("canny3.mp3")
 let cannyAudio = new Audio("canny.mp3")
 clickAudio.volume = 0.2
 
- canny1Audio.currentTime= 0.1
- canny2Audio.currentTime= 0.1
- canny3Audio.currentTime= 0.1
- cannyAudio.currentTime= 0.1
+//  canny1Audio.currentTime= 0.1
+//  canny2Audio.currentTime= 0.1
+//  canny3Audio.currentTime= 0.1
+//  cannyAudio.currentTime= 0.1
     
 let blinkToggle = true
 
@@ -36,30 +44,34 @@ let blinkToggle = true
 
 function removeDisplay(){
     bottomtext.style.display = "none"
-        playButton.style.display = "none"
-        h1.style.display = "none"
+    playButton.style.display = "none"
+    h1.style.display = "none"
 
 }
-function canny(){
-    let x = Math.random()
-    console.log(x)
-    if (x>.66){
-        canny1Audio.play()
-        console.log("if")
-    }
-    else if (.66 >= x && x > .33){
-        canny2Audio.play()
-        console.log("elif1")
-    }
-    else if (.33 >= x && x > 0.01){
-        canny3Audio.play()
-        console.log("elif2")
-    }
-    else{
-        cannyAudio.play()
-        console.log("else")
-    }
+function bounce(){
+    annaNorm.style.transform = "translate(-50%, -150%)"
 }
+
+// function canny(){
+//     let x = Math.random()
+//     console.log(x)
+//     if (x>.66){
+//         canny1Audio.play()
+//         console.log("if")
+//     }
+//     else if (.66 >= x && x > .33){
+//         canny2Audio.play()
+//         console.log("elif1")
+//     }
+//     else if (.33 >= x && x > 0.01){
+//         canny3Audio.play()
+//         console.log("elif2")
+//     }
+//     else{
+//         cannyAudio.play()
+//         console.log("else")
+//     }
+// }
 
 
 function start(){
@@ -79,28 +91,54 @@ function start(){
 
         document.addEventListener("click", canny)
 
-        placeholder.style.opacity = 1
+        
 
         
     }, 900)
     
     setTimeout(function(){
         removeDisplay()
+        
     }, 1600)
-    
-    
-    
-  
-    
-    
+    setTimeout(function(){annaNorm.classList.add("bounce")}, 1800)
+    annaNorm.classList.add("annaNormBounce")
+    hello.style.display = "block"
+    annaNorm.addEventListener("click", function(){
+        canny2Audio.play()
+        clickB.play()
+        annaNorm.classList.add("bounceUp");
+        annaNorm.classList.add("newAnnaPos");
+        annaNorm.classList.remove("bounce");
+        setTimeout(function(){annaNorm.classList.remove("bounceUp")}
+                   ,200)
+                   
+      })
+
 
     
+    
+}
+
+function hoverSound(){
+    console.log("over")
+    hoverB.play()
 }
 
 setTimeout(
     function(){
         playButton.addEventListener("click", start)
+        
+
+        console.log(window.innerWidth)
+        console.log(window.innerHeight)
+        
+        // if(parseInt(window.innerWidth) < parseInt(window.innerHeight)){
+        //     console.log("yes")
+        //     socialId.style.width = "50%"
+        // }
+
     }, 500)
+
 
 
 
