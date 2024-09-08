@@ -5,6 +5,8 @@ let firstDisplay = document.getElementsByClassName("firstDisplay")
 let komari = document.getElementById("komari")
 let socialId = document.getElementById("socials")
 let socials = document.getElementsByClassName("socials")
+
+let jumpCount = 0
 // let body = document.getElementsByTagName("body")
 let annaNorm = document.getElementById("annaNorm")
 
@@ -89,7 +91,7 @@ function start(){
         h1.classList.add("hidden")
         playButton.classList.add("hidden")
 
-        document.addEventListener("click", canny)
+        // document.addEventListener("click", canny)
 
         
 
@@ -104,6 +106,16 @@ function start(){
     annaNorm.classList.add("annaNormBounce")
     hello.style.display = "block"
     annaNorm.addEventListener("click", function(){
+        jumpCount += 1
+        if (jumpCount % 5 === 0){
+            annaNorm.src = "ANNAkill.png"
+            document.body.style.backgroundColor = "rgb(102, 126, 162)"
+        }
+        else{
+            annaNorm.src = "ANNAinit.png"
+            document.body.style.backgroundColor = "rgb(174, 206, 255)"
+        }
+
         canny2Audio.play()
         clickB.play()
         annaNorm.classList.add("bounceUp");
