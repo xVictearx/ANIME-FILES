@@ -225,7 +225,7 @@ body{
 
     transition: opacity 800ms ease-in;
 } */
- #annaNorm{
+#annaNorm{
     z-index: -1;
     /* background-color: blueviolet; */
 
@@ -238,6 +238,9 @@ body{
     
     
     /* transition: goUp 800ms ease-in; */
+}
+ #annaNorm:hover{
+    cursor:pointer;
  }
 
 
