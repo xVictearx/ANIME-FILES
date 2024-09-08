@@ -1,3 +1,14 @@
+// GLOBAL CONSTANTS
+let CALORIE_COUNT = 0
+let STARTER_MONEY = 10
+
+let currentMoney = 0
+
+let jumpCount = 0
+let blinkToggle = true
+let testingBool = true
+
+
 // IDS
 let playButton = document.getElementById("playButton")
 let h1 = document.getElementById("playButton2")
@@ -29,16 +40,6 @@ let cannyAudio = new Audio("canny.mp3")
 // INITIAL AUDIO SETTINGS
 clickAudio.volume = 0.3
 // clickB.currentTime = 0.000005
-
-
-// GLOBAL CONSTANTS
-let CALORIE_COUNT = 0
-let STARTER_MONEY = 10
-
-let currentMoney = 0
-
-let jumpCount = 0
-let blinkToggle = true
 
 
 
@@ -109,6 +110,7 @@ function start(){
 
     setTimeout(function(){annaNorm.classList.add("bounce")}, 1800)
     annaNorm.classList.add("annaNormBounce")
+    annaNorm.classList.add("annaStand")
     hello.style.display = "block"
 
     annaNorm.addEventListener("click", jumping)
@@ -118,37 +120,37 @@ function start(){
 function jumping(){  
     jumpCount += 1
     // console.log(jumpCount)
+    if (testingBool){
+        if (jumpCount % 5 === 0){
+            jumpCount = 0
+            annaNorm.src = "ANNAkill.png"
+            annaNorm.style.filter = `contrast(1.1) brightness(0.8)`
+            
+            document.body.style.backgroundColor = "rgb(20, 30, 40)"
+            // console.log(kill.duration)
+            
+            let duration = parseFloat(kill.duration) * 1000 + 1000
+            // console.log(duration)
+            kill.play()
+            annaNorm.removeEventListener("click", jumping)
+            annaNorm.classList.remove("annaNormBounce")
+            annaNorm.style.animationPlayState = "paused"
 
-    if (jumpCount % 5 === 0){
-        jumpCount = 0
-        annaNorm.src = "ANNAkill.png"
-        annaNorm.style.filter = `contrast(1.1) brightness(0.8)`
-        
-        document.body.style.backgroundColor = "rgb(20, 30, 40)"
-        // console.log(kill.duration)
-        
-        let duration = parseFloat(kill.duration) * 1000 + 1000
-        // console.log(duration)
-        kill.play()
-        annaNorm.removeEventListener("click", jumping)
-        annaNorm.classList.remove("annaNormBounce")
-        annaNorm.style.animationPlayState = "paused"
-
-        setTimeout(function(){
-            annaNorm.addEventListener("click", jumping)
-            annaNorm.classList.add("annaNormBounce")
-        }, duration)
-        
+            setTimeout(function(){
+                annaNorm.addEventListener("click", jumping)
+                annaNorm.classList.add("annaNormBounce")
+            }, duration)
+            
+        }
+        else{
+            annaNorm.src = "ANNAinit.png"
+            document.body.style.backgroundColor = "rgb(174, 206, 255)"
+            annaNorm.style.animationPlayState = "initial"
+            annaNorm.style.filter = ``
+            clickB.play()
+            clickB.currentTime = 0
+        }
     }
-    else{
-        annaNorm.src = "ANNAinit.png"
-        document.body.style.backgroundColor = "rgb(174, 206, 255)"
-        annaNorm.style.animationPlayState = "initial"
-        annaNorm.style.filter = ``
-        clickB.play()
-        clickB.currentTime = 0
-    }
-
     // canny2Audio.play()
     
     annaNorm.classList.add("bounceUp");
