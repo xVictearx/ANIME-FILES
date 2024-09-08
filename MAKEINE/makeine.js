@@ -124,7 +124,7 @@ function jumping(){
         document.body.style.backgroundColor = "rgb(102, 126, 162)"
         console.log(kill.duration)
         
-        let duration = parseFloat(kill.duration) * 1000 + 1500
+        let duration = parseFloat(kill.duration) * 1000 + 1000
         console.log(duration)
         kill.play()
         annaNorm.removeEventListener("click", jumping)
