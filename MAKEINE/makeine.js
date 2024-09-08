@@ -121,7 +121,9 @@ function jumping(){
 
     if (jumpCount % 5 === 0){
         annaNorm.src = "ANNAkill.png"
-        document.body.style.backgroundColor = "rgb(102, 126, 162)"
+        annaNorm.style.filter = `contrast(1.4) brightness(0.9)`
+        
+        document.body.style.backgroundColor = "rgb(20, 30, 40)"
         console.log(kill.duration)
         
         let duration = parseFloat(kill.duration) * 1000 + 1000
@@ -129,6 +131,7 @@ function jumping(){
         kill.play()
         annaNorm.removeEventListener("click", jumping)
         annaNorm.classList.remove("annaNormBounce")
+        annaNorm.style.animationPlayState = "paused"
 
         setTimeout(function(){
             annaNorm.addEventListener("click", jumping)
@@ -141,6 +144,8 @@ function jumping(){
     else{
         annaNorm.src = "ANNAinit.png"
         document.body.style.backgroundColor = "rgb(174, 206, 255)"
+        annaNorm.style.animationPlayState = "initial"
+        annaNorm.style.filter = ``
         clickB.play()
         clickB.currentTime = 0
     }
