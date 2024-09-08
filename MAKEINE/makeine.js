@@ -15,8 +15,9 @@ let hello = document.getElementById("hello")
 let startAudio = new Audio("makeineop.mp3")
 let clickAudio = new Audio("smash.wav")
 let clickB = new Audio("button2.mp3")
+let kill = new Audio("bwaan.mp3")
 
-clickB.currentTime = 0.000005
+// clickB.currentTime = 0.000005
 
 let canny1Audio = new Audio("canny1.mp3")
 let canny2Audio = new Audio("canny2.mp3")
@@ -105,41 +106,67 @@ function start(){
     setTimeout(function(){annaNorm.classList.add("bounce")}, 1800)
     annaNorm.classList.add("annaNormBounce")
     hello.style.display = "block"
-    annaNorm.addEventListener("click", function(){
-        jumpCount += 1
-        if (jumpCount % 5 === 0){
-            annaNorm.src = "ANNAkill.png"
-            document.body.style.backgroundColor = "rgb(102, 126, 162)"
-        }
-        else{
-            annaNorm.src = "ANNAinit.png"
-            document.body.style.backgroundColor = "rgb(174, 206, 255)"
-        }
 
-        canny2Audio.play()
+
+    annaNorm.addEventListener("click", jumping)
+    
+
+    
+    
+}
+
+function jumping(){
+    
+    jumpCount += 1
+
+    if (jumpCount % 5 === 0){
+        annaNorm.src = "ANNAkill.png"
+        document.body.style.backgroundColor = "rgb(102, 126, 162)"
+        console.log(kill.duration)
+        
+        let duration = parseFloat(kill.duration) * 1000 + 1500
+        console.log(duration)
+        kill.play()
+        annaNorm.removeEventListener("click", jumping)
+        annaNorm.classList.remove("annaNormBounce")
+
+        setTimeout(function(){
+            annaNorm.addEventListener("click", jumping)
+            annaNorm.classList.add("annaNormBounce")
+        }
+            
+            , duration)
+        
+    }
+    else{
+        annaNorm.src = "ANNAinit.png"
+        document.body.style.backgroundColor = "rgb(174, 206, 255)"
         clickB.play()
-        annaNorm.classList.add("bounceUp");
-        annaNorm.classList.add("newAnnaPos");
-        annaNorm.classList.remove("bounce");
-        setTimeout(function(){annaNorm.classList.remove("bounceUp")}
-                   ,200)
+        clickB.currentTime = 0
+    }
+
+    // canny2Audio.play()
+    
+    annaNorm.classList.add("bounceUp");
+    annaNorm.classList.add("newAnnaPos");
+    annaNorm.classList.remove("bounce");
+    setTimeout(function(){annaNorm.classList.remove("bounceUp")}
+                ,200)
                    
-      })
-
-
-    
-    
+      
 }
 
 function hoverSound(){
     console.log("over")
-    hoverB.play()
+    clickB.play()
+    clickB.currentTime = 0
 }
+
 
 setTimeout(
     function(){
         playButton.addEventListener("click", start)
-        
+        komari.addEventListener("click", hoverSound)
 
         console.log(window.innerWidth)
         console.log(window.innerHeight)
