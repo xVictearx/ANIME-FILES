@@ -1,3 +1,6 @@
+import {setupTypeWrite, typeWrite, stopTyping} from "./makeineTYPING.js"
+
+
 // GLOBAL CONSTANTS
 let CALORIE_COUNT = 0
 let STARTER_MONEY = 10
@@ -39,6 +42,7 @@ let cannyAudio = new Audio("canny.mp3")
 
 // INITIAL AUDIO SETTINGS
 clickAudio.volume = 0.3
+kill.volume = 0.5
 // clickB.currentTime = 0.000005
 
 
@@ -53,9 +57,9 @@ function removeDisplay(){
     h1.style.display = "none"
 }
 
-function hoverSound(){
-    console.log("over")
+export function hoverSound(){
     clickB.play()
+    clickB.volume = 1
     clickB.currentTime = 0
 }
 
@@ -84,8 +88,10 @@ function bounce(){
 //     }
 // }
 
-
-function start(){
+export function jumpCounter(){
+    return jumpCount
+}
+export function start(){
     playButton.removeEventListener("click", start)
     playButton.removeEventListener("mouseover", start)
     playButton.classList.remove("hover")
@@ -119,9 +125,9 @@ function start(){
 
 function jumping(){  
     jumpCount += 1
-    // console.log(jumpCount)
+    console.log(jumpCount)
     if (testingBool){
-        if (jumpCount % 5 === 0){
+        if (jumpCount % 15 === 0){
             jumpCount = 0
             annaNorm.src = "ANNAkill.png"
             annaNorm.style.filter = `contrast(1.1) brightness(0.8)`
@@ -164,23 +170,6 @@ function jumping(){
 
 
 
-
-
-// STARTING SCREEN
-setTimeout(
-    function(){
-        playButton.addEventListener("click", start)
-        komari.addEventListener("click", hoverSound)
-
-        console.log(window.innerWidth)
-        console.log(window.innerHeight)
-        
-        // if(parseInt(window.innerWidth) < parseInt(window.innerHeight)){
-        //     console.log("yes")
-        //     socialId.style.width = "50%"
-        // }
-
-    }, 500)
 
 
 

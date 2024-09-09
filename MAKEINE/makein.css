@@ -215,7 +215,7 @@ body{
 .annaStand{
     position: fixed;
     z-index: 5;
-    background-color: red;
+    /* background-color: red; */
     left: 50%;
     /* bottom: 60%; */
     /* transform: translate(-50%,80%); */
@@ -234,10 +234,12 @@ body{
     border-color: rgb(45, 66, 109);
     border-style: solid;
     width: 250px;
-    /* left: 50%; */
-    position: absolute;
+    height: 300px;
+    top: 80%;
+    left: 50%;
     
-    transform: translate(50%,100%); 
+    
+    transform: translate(0%,45%); 
     
 }
 /* .textBubble::after{
@@ -246,11 +248,12 @@ body{
     transform: translate(35%,50%);
     
 } */
-#bubbleText{
+.textBubble p{
     text-align: center;
+    text-justify: distribute-all-lines;
     /* margin-left: auto;
     margin-right: auto; */
-    font-size: 60px;
+    font-size: 30px;
 }
 
 
