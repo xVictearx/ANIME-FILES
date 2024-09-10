@@ -7,7 +7,7 @@ let tagOpen;
 let pos;
 let entryContent;
 let text;
-
+let counter = 0;
 
 // IDS
 let playButton = document.getElementById("playButton")
@@ -26,18 +26,21 @@ let hello = document.getElementById("hello")
 
 
 // AUDIO
-let type = new Audio("type.mp3")
+let type = new Audio("typing2.mp3")
+
+type.volume = 0.6
 
 function typingSound(){
-    type.currentTime = 0.2
+    type.currentTime = 0
     type.play()
 }
 
-export function setupTypeWrite() {
+export function setupTypeWrite(textID) {
     pos = 0;
     typingSpeed = 70;
     
-    entryContent = document.getElementById("bubbleText")
+    entryContent = document.getElementById(textID)
+    
     text = entryContent.innerHTML.replace(/\s+/g, ' ');
     buffer = text;
     entryContent.innerHTML = '';
@@ -56,7 +59,7 @@ export function typeWrite() {
         if (!tagOpen) {
             entryContent.innerHTML += text.charAt(pos);
             speed = typingSpeed
-            
+            typingSound()    
             
 
         }
@@ -69,15 +72,32 @@ export function typeWrite() {
         }
 
         pos++;
-
         
         setTimeout(typeWrite, speed);
+
         
     }
+    
+    // else if(pos >= text.length && typing && counter < length){
+    //     console.log("elseif    " + counter)
+    //     counter++
+        
+    //     setupTypeWrite(textID, length)
+    //     typeWrite(textID, length)
+        
+    // }
+    
+    
   }
+  
 
-  export function stopTyping() {
-    let currentEntry = document.getElementById("entry".concat(entryNum)).querySelector('.text');
+export function startTyping(textId){
+    setupTypeWrite(textId)
+    typeWrite()
+}
+
+export function stopTyping() {
+    let currentEntry = document.getElementById("bubbleText")
     currentEntry.innerHTML = buffer;
     typing = false;
-  }
+}
