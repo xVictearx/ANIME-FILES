@@ -1,4 +1,4 @@
-import {setupTypeWrite, typeWrite, stopTyping} from "./makeineTYPING.js"
+import {setupTypeWrite, typeWrite, startTyping, stopTyping} from "./makeineTYPING.js"
 
 
 // GLOBAL CONSTANTS
@@ -9,7 +9,7 @@ let currentMoney = 0
 
 let jumpCount = 0
 let blinkToggle = true
-let testingBool = true
+let testingBool = false
 
 
 // IDS
@@ -24,7 +24,7 @@ let socials = document.getElementsByClassName("socials")
 
 let annaNorm = document.getElementById("annaNorm")
 let hello = document.getElementById("hello")
-
+let textBubble = document.getElementById("textBubble")
 // let body = document.getElementsByTagName("body")
 
 
@@ -66,7 +66,12 @@ export function hoverSound(){
 function bounce(){
     annaNorm.style.transform = "translate(-50%, -150%)"
 }
-
+function hop(){
+    annaNorm.classList.add("bounceUp");
+    setTimeout(function(){
+        annaNorm.classList.remove("bounceUp")
+    }, 200)
+}
 // function canny(){
 //     let x = Math.random()
 //     console.log(x)
@@ -114,12 +119,34 @@ export function start(){
         removeDisplay()
     }, 1600)
 
-    setTimeout(function(){annaNorm.classList.add("bounce")}, 1800)
+    setTimeout(function(){
+        annaNorm.classList.add("bounce")
+
+        
+
+        setTimeout(function(){
+            textBubble.style.display = "block"
+            annaNorm.classList.remove("bounce")
+            
+            annaNorm.classList.add("newAnnaPos")
+            hop()
+            startTyping(["bubbleText","anna_SPEECH_1"], 0)
+            
+            setTimeout(function(){
+                annaNorm.addEventListener("click", jumping)
+            }
+                ,100)
+        }, 1200)
+
+        }, 1800)
+    
+    
+
     annaNorm.classList.add("annaNormBounce")
     annaNorm.classList.add("annaStand")
-    hello.style.display = "block"
+    // hello.style.display = "block"
 
-    annaNorm.addEventListener("click", jumping)
+    
 }
 
 
@@ -148,19 +175,19 @@ function jumping(){
             }, duration)
             
         }
-        else{
-            annaNorm.src = "ANNAinit.png"
-            document.body.style.backgroundColor = "rgb(174, 206, 255)"
-            annaNorm.style.animationPlayState = "initial"
-            annaNorm.style.filter = ``
-            clickB.play()
-            clickB.currentTime = 0
-        }
     }
+    else{
+        annaNorm.src = "ANNAinit.png"
+        document.body.style.backgroundColor = "rgb(174, 206, 255)"
+        annaNorm.style.animationPlayState = "initial"
+        annaNorm.style.filter = ``
+        clickB.play()
+        clickB.currentTime = 0
+    }
+    
     // canny2Audio.play()
     
-    annaNorm.classList.add("bounceUp");
-    annaNorm.classList.add("newAnnaPos");
+    hop()
     annaNorm.classList.remove("bounce");
 
     setTimeout(function(){annaNorm.classList.remove("bounceUp")}

@@ -35,11 +35,11 @@ function typingSound(){
     type.play()
 }
 
-export function setupTypeWrite(textID) {
+export function setupTypeWrite(textID, length) {
     pos = 0;
     typingSpeed = 70;
     
-    entryContent = document.getElementById(textID)
+    entryContent = document.getElementById(textID[pos])
     
     text = entryContent.innerHTML.replace(/\s+/g, ' ');
     buffer = text;
@@ -48,7 +48,7 @@ export function setupTypeWrite(textID) {
   }
 
 
-export function typeWrite() {
+export function typeWrite(length) {
     
     if (pos < text.length && typing) {
         if (text.charAt(pos) == '<') {
@@ -77,23 +77,18 @@ export function typeWrite() {
 
         
     }
-    
-    // else if(pos >= text.length && typing && counter < length){
-    //     console.log("elseif    " + counter)
-    //     counter++
-        
-    //     setupTypeWrite(textID, length)
-    //     typeWrite(textID, length)
-        
-    // }
+    else if (pos > text.length){
+        pos = 0
+       
+    }
     
     
   }
   
 
-export function startTyping(textId){
-    setupTypeWrite(textId)
-    typeWrite()
+export function startTyping(textId, length){
+    setupTypeWrite(textId,length)
+    typeWrite(length)
 }
 
 export function stopTyping() {

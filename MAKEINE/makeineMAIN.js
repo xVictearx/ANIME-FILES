@@ -1,5 +1,5 @@
 import {start, hoverSound, jumpCounter} from "./makeine.js"
-import { typeWrite, setupTypeWrite } from "./makeineTYPING.js"
+import { typeWrite, setupTypeWrite, stopTyping } from "./makeineTYPING.js"
 let flag = false
 
 // STARTUP MENU SCREEN
@@ -9,6 +9,6 @@ setTimeout(
         komari.addEventListener("click", hoverSound)
     }, 500)
 
-setupTypeWrite()
-typeWrite()
 
+
+// document.body.addEventListener( "click", stopTyping)

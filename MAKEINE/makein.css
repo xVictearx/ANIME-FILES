@@ -226,13 +226,19 @@ body{
 
     /* transition: 800ms ease-out; */
 }
-.textBubble{
+#textBubble{
+    display: none;
     position: relative;
 	background: white;
 	border-radius: 1.5em;
     border-width: 5px;
     border-color: rgb(45, 66, 109);
     border-style: solid;
+
+    color: rgb(45, 66, 109);
+    font-family:"TextBubbleFont";
+    font-weight:bolder;
+    
     width: 250px;
     height: 300px;
     top: 80%;
@@ -248,19 +254,30 @@ body{
     transform: translate(35%,50%);
     
 } */
-.textBubble p{
+#textBubble p{
     text-align: center;
     text-justify: distribute-all-lines;
+    
     /* margin-left: auto;
     margin-right: auto; */
     font-size: 30px;
 }
 
+#anna_SPEECH_1 p {
+    font-size: 10px;
+}
 
-#hello{
+
+/* #hello{
     display: none;
     position: absolute;
     top: 20%;
     transform: translate(10%,50%);
     font-size: 25px;
+} */
+
+
+@font-face {
+    font-family: "TextBubbleFont";
+    src: url(font2.ttf);
 }
