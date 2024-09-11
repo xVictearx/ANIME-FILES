@@ -35,20 +35,21 @@ function typingSound(){
     type.play()
 }
 
-export function setupTypeWrite(textID, length) {
+export function setupTypeWrite(textID, i) {
     pos = 0;
     typingSpeed = 70;
     
-    entryContent = document.getElementById(textID[pos])
-    
+    entryContent = document.getElementById(textID[i])
+    entryContent.classList.remove("displayOff")
+    console.log(entryContent)
     text = entryContent.innerHTML.replace(/\s+/g, ' ');
     buffer = text;
     entryContent.innerHTML = '';
     typing = true;
   }
-
-
-export function typeWrite(length) {
+let index = 2
+// let i =1
+export function typeWrite(textId, i) {
     
     if (pos < text.length && typing) {
         if (text.charAt(pos) == '<') {
@@ -57,9 +58,10 @@ export function typeWrite(length) {
         }
 
         if (!tagOpen) {
-            entryContent.innerHTML += text.charAt(pos);
             speed = typingSpeed
-            typingSound()    
+            entryContent.innerHTML += text.charAt(pos);
+            console.log("text.charAt(pos)=  " +   text.charAt(pos))
+            typingSound()  
             
 
         }
@@ -73,22 +75,38 @@ export function typeWrite(length) {
 
         pos++;
         
-        setTimeout(typeWrite, speed);
+        setTimeout(function(){typeWrite(textId,i)}, speed);
 
-        
+        // console.log("i=  " +   i)
+        // console.log("pos=  " +   pos)
+        // console.log("text.l=  " +   text.length)
     }
-    else if (pos > text.length){
-        pos = 0
+    
+    
+    if (pos >= text.length){
+        
+        console.log("i= " +   i)
+        console.log("done")
+        console.log("textl=  " + textId.length)
+        console.log(i + 1< text.length)
+        if (i + 1<textId.length){
+            i++
+            
+            
+            startTyping(textId,i)
+            // typeWrite(textId,i+1)
+        }
        
     }
+    
     
     
   }
   
 
-export function startTyping(textId, length){
-    setupTypeWrite(textId,length)
-    typeWrite(length)
+export function startTyping(textId, start){
+    setupTypeWrite(textId,start)
+    typeWrite(textId,start)
 }
 
 export function stopTyping() {

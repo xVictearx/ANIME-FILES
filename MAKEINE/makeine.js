@@ -130,6 +130,7 @@ export function start(){
             
             annaNorm.classList.add("newAnnaPos")
             hop()
+            
             startTyping(["bubbleText","anna_SPEECH_1"], 0)
             
             setTimeout(function(){
