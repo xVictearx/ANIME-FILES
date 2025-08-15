@@ -26,7 +26,7 @@ let hello = document.getElementById("hello")
 
 
 // AUDIO
-let type = new Audio("typing2.mp3")
+let type = new Audio("assets/sounds/typing2.mp3")
 
 type.volume = 0.6
 
@@ -48,7 +48,7 @@ export function setupTypeWrite(textID, i) {
     typing = true;
   }
 let index = 2
-// let i =1
+
 export function typeWrite(textId, i) {
     
     if (pos < text.length && typing) {
@@ -62,24 +62,16 @@ export function typeWrite(textId, i) {
             entryContent.innerHTML += text.charAt(pos);
             console.log("text.charAt(pos)=  " +   text.charAt(pos))
             typingSound()  
-            
-
         }
 
         if (text.charAt(pos) == '>') {
             tagOpen = false;
-            entryContent.insertAdjacentHTML('beforeend', '<br>');
-            
-            
+            entryContent.insertAdjacentHTML('beforeend', '<br>');            
         }
 
         pos++;
         
         setTimeout(function(){typeWrite(textId,i)}, speed);
-
-        // console.log("i=  " +   i)
-        // console.log("pos=  " +   pos)
-        // console.log("text.l=  " +   text.length)
     }
     
     
@@ -98,9 +90,7 @@ export function typeWrite(textId, i) {
         }
        
     }
-    
-    
-    
+    return 10;
   }
   
 

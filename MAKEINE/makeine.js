@@ -29,15 +29,15 @@ let textBubble = document.getElementById("textBubble")
 
 
 // AUDIO
-let startAudio = new Audio("makeineop.mp3")
-let clickAudio = new Audio("smash.wav")
-let clickB = new Audio("button2.mp3")
-let kill = new Audio("bwaan.mp3")
+let startAudio = new Audio("assets/sounds/makeineop.mp3")
+let clickAudio = new Audio("assets/sounds/smash.wav")
+let clickB = new Audio("assets/sounds/button2.mp3")
+let kill = new Audio("assets/sounds/bwaan.mp3")
 
-let canny1Audio = new Audio("canny1.mp3")
-let canny2Audio = new Audio("canny2.mp3")
-let canny3Audio = new Audio("canny3.mp3")
-let cannyAudio = new Audio("canny.mp3")
+let canny1Audio = new Audio("assets/sounds/canny1.mp3")
+let canny2Audio = new Audio("assets/sounds/canny2.mp3")
+let canny3Audio = new Audio("assets/sounds/canny3.mp3")
+let cannyAudio = new Audio("assets/sounds/canny.mp3")
 
 
 // INITIAL AUDIO SETTINGS
@@ -131,12 +131,12 @@ export function start(){
             annaNorm.classList.add("newAnnaPos")
             hop()
             
-            startTyping(["bubbleText","anna_SPEECH_1"], 0)
-            
-            setTimeout(function(){
-                annaNorm.addEventListener("click", jumping)
-            }
-                ,100)
+                let x = startTyping(["bubbleText","anna_SPEECH_1"], 0)
+                
+        
+                if (x=10) {
+                    annaNorm.addEventListener("click", jumping)
+                }
         }, 1200)
 
         }, 1800)
@@ -145,9 +145,7 @@ export function start(){
 
     annaNorm.classList.add("annaNormBounce")
     annaNorm.classList.add("annaStand")
-    // hello.style.display = "block"
-
-    
+     
 }
 
 
@@ -157,14 +155,14 @@ function jumping(){
     if (testingBool){
         if (jumpCount % 15 === 0){
             jumpCount = 0
-            annaNorm.src = "ANNAkill.png"
+            annaNorm.src = "assets/images/ANNAkill.png"
             annaNorm.style.filter = `contrast(1.1) brightness(0.8)`
             
             document.body.style.backgroundColor = "rgb(20, 30, 40)"
-            // console.log(kill.duration)
+   
             
             let duration = parseFloat(kill.duration) * 1000 + 1000
-            // console.log(duration)
+     
             kill.play()
             annaNorm.removeEventListener("click", jumping)
             annaNorm.classList.remove("annaNormBounce")
@@ -178,15 +176,13 @@ function jumping(){
         }
     }
     else{
-        annaNorm.src = "ANNAinit.png"
+        annaNorm.src = "assets/images/ANNAinit.png"
         document.body.style.backgroundColor = "rgb(174, 206, 255)"
         annaNorm.style.animationPlayState = "initial"
         annaNorm.style.filter = ``
         clickB.play()
         clickB.currentTime = 0
     }
-    
-    // canny2Audio.play()
     
     hop()
     annaNorm.classList.remove("bounce");

@@ -217,16 +217,9 @@ body{
 .annaStand{
     position: fixed;
     z-index: 5;
-    /* background-color: red; */
+   
     left: 50%;
-    /* bottom: 60%; */
-    /* transform: translate(-50%,80%); */
-    
-    /* padding-bottom: 20%; */
-    /* aspect-ratio: 1 / 1; */
-    /* width: 20%; */
-
-    /* transition: 800ms ease-out; */
+   
 }
 #textBubble{
     display: none;
